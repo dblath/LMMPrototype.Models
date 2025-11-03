@@ -1,0 +1,25 @@
+# Build output
+bin/
+obj/
+
+# VS Code and Visual Studio folders
+.vscode/
+.vs/
+
+# User-specific files
+*.user
+*.suo
+
+# Logs and temp
+*.log
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backup or package files
+*.bak
+*.zip
+*.tar
+*.gz
