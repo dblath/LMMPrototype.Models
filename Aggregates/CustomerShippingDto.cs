@@ -45,6 +45,11 @@ public sealed class CustomerShippingDto
         Customer.UpdateShippingAddress(street, city, state, postalCode);
     }
 
+    public void UpdateCustomerName(string newName)
+    {
+        Customer.ChangeName(newName);
+    }
+
     public void UpdateDeliveryAccess(
         string parentId,
         string? instructions,
