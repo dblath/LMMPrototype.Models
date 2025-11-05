@@ -1,4 +1,5 @@
 using LMMPrototype.Models.Canonical;
+using System.Text.Json.Serialization;
 
 namespace LMMPrototype.Models.Extensions;
 
@@ -27,6 +28,31 @@ public sealed class LocationAccessExtension : ICanonicalModel
 
         IsActive = true;
         HasChanges = false;
+    }
+
+    // JSON constructor to round-trip state over transport
+    [JsonConstructor]
+    public LocationAccessExtension(
+        string parentId,
+        string? instructions,
+        string? accessCode,
+        string? windowStart,
+        string? windowEnd,
+        string? contactName,
+        string? contactPhone,
+        bool isActive)
+    {
+        ParentId = string.IsNullOrWhiteSpace(parentId) ? "unassigned" : parentId;
+
+        // Apply full state using existing mutation helpers
+        WithState(
+            instructions,
+            accessCode,
+            windowStart,
+            windowEnd,
+            contactName,
+            contactPhone,
+            isActive);
     }
 
     // --- Mutators ---
