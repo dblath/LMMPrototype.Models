@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using LMMPrototype.Models.Canonical;
+using System.Text.Json.Serialization;
 
 namespace LMMPrototype.Models.Aggregates;
 
@@ -16,6 +17,7 @@ public sealed class CustomerBillingDto
     public bool HasChanges =>
         Customer.HasChanges || BillingRecords.Any(b => b.HasChanges);
 
+    [JsonConstructor]
     public CustomerBillingDto(CustomerRecordDto customer, IEnumerable<BillingRecordDto> billingRecords)
     {
         Customer = customer ?? throw new ArgumentNullException(nameof(customer));
